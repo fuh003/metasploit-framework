@@ -497,9 +497,7 @@ protected
 
         self.busy = true
         begin
-          out, err, st = Open3.capture3(line)
-          print_line("out:\n" + out.to_s + "\nerr:\n" + err.to_s + "\nexit code:\n" + st.exitstatus.to_s)
-
+          system(line)
         rescue ::Errno::EACCES, ::Errno::ENOENT
           print_error("Permission denied exec: #{line}")
         end
